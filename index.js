@@ -13,7 +13,7 @@ const io = socketIO(server, {
   },
 });
 
-const users = [];
+let users = [];
 
 app.get('/api', (req, res) => {
   res.send({
@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('logout', (data) => {
-    users.filter(user => user.socketId !== data);
+    users = users.filter(user => user.socketId !== data);
     io.emit('responseNewUser', users);
   });
 
