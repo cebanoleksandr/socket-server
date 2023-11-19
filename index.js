@@ -6,16 +6,18 @@ const socketIO = require('socket.io');
 const app = express();
 const PORT = 5000;
 
-app.use(cors());
-
 const server = http.createServer(app);
-const io = socketIO(server);
+const io = socketIO(server, {
+  cors: {
+    origin: 'http://localhost:5173',
+  },
+});
 
 let users = [];
 
 app.get('/api', (req, res) => {
   res.send({
-    message: 'Hello, world!!!',
+    message: 'Hello, world!',
   });
 });
 
