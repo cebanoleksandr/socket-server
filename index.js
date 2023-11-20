@@ -7,12 +7,7 @@ const app = express();
 const PORT = 5000;
 
 const server = http.createServer(app);
-const io = socketIO(server, {
-  cors: {
-    origin: 'http://localhost:5173',
-    methods: ["GET", "POST"]
-  },
-});
+const io = socketIO(server);
 
 let users = [];
 
